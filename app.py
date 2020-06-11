@@ -16,18 +16,18 @@ def index():
     chart_list = Markup(chart_list + "</ol>")
 
 
-    return render_template('index.html', variable=chart_list)
+    return render_template('index.html', charts=chart_list, books=book_api())
 
 def book_api():
-    print("book api")
     books = requests.get("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=J9mhscz58wH1ZY76Z5SYHH4kr04gfRA6")
     nyt_dict = json.loads(books.content)
     books_list = nyt_dict["results"]["books"]
+    books_html = "<ol>"
     for book in books_list:
-        print(book["title"])
+        books_html = books_html + "<li>" + book["title"] + " - " + book["author"] + "</li>"
+    books_html = Markup(books_html + "</ol>")
+    return books_html
 
 
-
-book_api()
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+    app.run()
