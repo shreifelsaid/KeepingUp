@@ -1,4 +1,5 @@
 import billboard
+import requests
 chart = billboard.ChartData('hot-100')
 
 
@@ -12,7 +13,18 @@ def index():
     for song in chart :
         chart_list = chart_list + "<li>" + song.title + " - " + song.artist + "</li>"
     chart_list = Markup(chart_list + "</ol>")
+
+
+
+    
+
     return render_template('index.html', variable=chart_list)
 
-if __name__ == '__main__':
-    app.run()
+def book_api():
+    print("book api")
+    books = requests.get("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=J9mhscz58wH1ZY76Z5SYHH4kr04gfRA6")
+    print(books.content)
+
+book_api()
+# if __name__ == '__main__':
+#     app.run()
