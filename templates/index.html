@@ -1,6 +1,27 @@
 <!doctype html>
 
 <html lang="en">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create three equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+      height: 300px; /* Should be removed. Only for demonstration */
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
 <head>
   <meta charset="utf-8">
 
@@ -12,14 +33,27 @@
 </head>
 
 <body>
+  <div class="row">
+
   <h2>KeepingUp .. Latest Billboard Songs!</h2>
 
-  <h4>Hot 100 billboard charts</h4>
-  {{charts}}
-  <h4>NYT hardcover nonfiction best sellers</h4>
-  {{nonfic}}
-  <h4>NYT hardcover fiction best sellers</h4>
-  {{fic}}
+  <div class="column">
+    <h4>Hot 100 billboard charts</h4>
+    {{charts}}
+  </div>
+
+  <div class="column">
+    <h4>NYT hardcover nonfiction best sellers</h4>
+    {{nonfic}}
+  </div>
+
+  <div class="column">
+    <h4>NYT hardcover fiction best sellers</h4>
+    {{fic}}
+  </div>
+  </div>
+
+
 
 
 </body>
