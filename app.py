@@ -15,11 +15,12 @@ def index():
         chart_list = chart_list + "<li>" + song.title + " - " + song.artist + "</li>"
     chart_list = Markup(chart_list + "</ol>")
 
+    fic = book_api("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=J9mhscz58wH1ZY76Z5SYHH4kr04gfRA6")
+    nonfic = book_api("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=J9mhscz58wH1ZY76Z5SYHH4kr04gfRA6")
+    return render_template('index.html', charts=chart_list, nonfic=nonfic, fic=fic)
 
-    return render_template('index.html', charts=chart_list, books=book_api())
-
-def book_api():
-    books = requests.get("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=J9mhscz58wH1ZY76Z5SYHH4kr04gfRA6")
+def book_api(api):
+    books = requests.get(api)
     nyt_dict = json.loads(books.content)
     books_list = nyt_dict["results"]["books"]
     books_html = "<ol>"
