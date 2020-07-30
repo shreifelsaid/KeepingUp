@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+
+<style>
+  #actual-table {
+    border-collapse: collapse;
+  }
+
+  #actual-table td {
+    width: 20%;
+    padding: 10px;
+    vertical-align: top;
+  }
+
+  #actual-table td:nth-child(even) {
+    background: #ccc;
+  }
+
+  #actual-table td:nth-child(odd) {
+    background: #eee;
+  }
+</style>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>KeepUp</title>
+  <meta name="description" content="Keeping up, top billboards, books, movies .. etc">
+  <meta name="SA" content="SitePoint">
+
+
+</head>
+
+<body>
+
+  <h2 style="text-align:center">KeepingUp .. Latest Music, Books, and Movies!</h2>
+
+  <table id="actual-table">
+    <tr>
+      <td>
+        <h4>Hot 100 billboard charts</h4>
+        {{charts}}
+      </td>
+      <td>
+        <h4>NYT hardcover nonfiction best sellers</h4>
+        {{nonfic}}
+      </td>
+      <td>
+        <h4>NYT hardcover fiction best sellers</h4>
+        {{fic}}
+      </td>
+      <td>
+      <h4>Trending movies</h4>
+        {{movies}}
+      </td>
+    </tr>
+  </table>
+
+
+
+
+
+</body>
+
+</html>
